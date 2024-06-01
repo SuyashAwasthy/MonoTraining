@@ -1,0 +1,39 @@
+package com.techlabs.reflection;
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
+
+public class ReflectionOfString {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		try {
+			Class stringClass = Class.forName("java.lang.String");
+			System.out.println(stringClass.getName());
+			System.out.println(stringClass.getSimpleName());
+			System.out.println(stringClass.getTypeName());
+			
+			Constructor constructors[] = stringClass.getConstructors();
+			
+			for(Constructor constructor:constructors) {
+				System.out.println(constructor.getName());
+			}
+			
+			Method methods[] = stringClass.getMethods();
+			
+			
+		
+			//Parameter parameters[] = stringClass.getParameters();
+		
+			
+			
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+}

@@ -1,0 +1,21 @@
+package com.techlabs.reflection;
+
+public class ReflectionOfString {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		try {
+			Class stringClass = Class.forName("java.lang.String");
+			System.out.println(stringClass.getName());
+			System.out.println(stringClass.getSimpleName());
+			System.out.println(stringClass.getTypeName());
+		
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+}

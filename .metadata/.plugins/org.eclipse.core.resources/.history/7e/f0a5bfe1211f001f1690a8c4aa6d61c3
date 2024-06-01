@@ -1,0 +1,23 @@
+package com.techlabs.test;
+
+import com.techlabs.model.BoxWeight;
+
+public class BoxWeightTest {
+
+	public static void main(String[] args) {
+	
+		BoxWeight boxWeight = new BoxWeight();
+		
+		boxWeight.depth=20;
+		boxWeight.width=30;
+		boxWeight.height=50;
+		boxWeight.weight=100;
+		
+		System.out.println(boxWeight.depth);
+		System.out.println(boxWeight.width);
+		System.out.println(boxWeight.height);
+		System.out.println(boxWeight.weight);
+
+	}
+
+}

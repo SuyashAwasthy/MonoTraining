@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete element from project &apos;04-objectcalisthenics-app&apos;&#x0D;&#x0A;- Original project: &apos;04-objectcalisthenics-app&apos;&#x0D;&#x0A;- Original element: &apos;04-objectcalisthenics-app/src/MatrixCalculator&apos;" description="Delete element" element1="/src&lt;MatrixCalculator" elements="1" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1716795198328" subPackages="false" version="1.0"/>
+</session>

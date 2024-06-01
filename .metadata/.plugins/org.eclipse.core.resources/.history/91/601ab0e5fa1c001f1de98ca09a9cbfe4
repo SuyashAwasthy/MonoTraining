@@ -1,0 +1,70 @@
+package com.techlabs.assignments;
+
+import java.util.Scanner;
+
+public class PigDice {
+
+	private static int totalScore = 0, turn = 1;
+	
+	public static void main(String[] args) {
+		
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.println("Let's Play PIG!\nSee how many turns it takes you to get to 20.\nTurn ends when you hold or roll a 1.\nIf you roll a 1, you lose all points for the turn.\nIf you hold, you save all points for the turn.\n\nLet's start!");
+		
+		while(totalScore<20) {
+			
+			int turnScore = 0;
+		
+			char rollOrHold = 'r'; 
+			
+			System.out.println("\nTURN " + turn);
+			
+			checkCondition(rollOrHold, turnScore, scanner);
+			
+			System.out.println("\nScore for turn: " + turnScore);
+			
+			totalScore += turnScore;
+			
+			System.out.println("\nTotal score:" + totalScore);
+			
+			turn++;
+		}
+		
+		System.out.println("\nYou finished in " + (turn-1) + " turn(s)!\n\nGame Over!");
+        
+		scanner.close();
+	}
+	
+	private static void checkCondition(char rollOrHold, int turnScore, Scanner scanner) {
+	
+		while(rollOrHold == 'r' && turnScore<20) {
+		
+			System.out.println("\nRoll or hold? (r/h):");
+			
+			rollOrHold = scanner.next().charAt(0);
+			
+			if(rollOrHold == 'h') 
+				return;
+			
+			int die = (int)(Math.random() * 6) + 1;
+			
+			System.out.println("\nDie: " + die);
+			
+			if(die==1) {
+				
+				System.out.println("Turn Over. No score.\n");
+				
+				turnScore = 0;
+				
+				return;
+			}
+			
+			turnScore += die;
+			
+			if(totalScore + turnScore >= 20) 
+				return;
+		}
+	}
+
+}
