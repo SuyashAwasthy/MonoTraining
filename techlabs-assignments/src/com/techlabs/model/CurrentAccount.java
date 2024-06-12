@@ -15,7 +15,7 @@ public class CurrentAccount extends Account{
 
 	    public boolean validateOverDraft(int amount) {
 	        if (amount > overDraftLimit + this.getAccountBalance()) {
-	            System.out.println("Your account balance is exceeding the overdraft limit.");
+	            System.out.println("Your account balance has exceeded the overdraft limit.");
 	            return false;
 	        }
 	        if((this.getAccountBalance()-amount)<0) {

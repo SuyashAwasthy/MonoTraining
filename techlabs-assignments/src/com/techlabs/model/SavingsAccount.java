@@ -15,7 +15,7 @@ public class SavingsAccount extends Account{
 
 	public boolean validateMinimumBalance(int amount) {
 		if(getAccountBalance()<amount) {
-			System.out.println("You don't have enough funds in your account.");
+			System.out.println("You don't have enough balance in your account.");
 			return false;
 		}
         if (getAccountBalance() - amount < minimumBalance) {

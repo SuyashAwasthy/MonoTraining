@@ -32,8 +32,6 @@ public class ReflectionOfString {
 			for(Method method:methods) {					
 				System.out.println(method.getName()+"\t"+method.getParameterCount());
 			}
-		
-			
 			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block

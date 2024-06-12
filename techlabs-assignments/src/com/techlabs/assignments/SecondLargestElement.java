@@ -18,7 +18,7 @@ public class SecondLargestElement {
 				array[i] = scanner.nextInt();	
 			}
 			int largest, secondLargest;
-			largest = secondLargest = Integer.MIN_VALUE;
+			largest = secondLargest = array[0]; //check
 			for (int i = 0; i < arraySize; i++) {
 				if (array[i] > largest) {
 					secondLargest = largest;
@@ -28,7 +28,7 @@ public class SecondLargestElement {
 					secondLargest = array[i];
 				}
 			}
-			if (secondLargest == Integer.MIN_VALUE)
+			if (secondLargest == array[0]) //check
 				System.out.print("Second largest element does not exist.");
 			else
 				System.out.print("Second largest element is " + secondLargest);
