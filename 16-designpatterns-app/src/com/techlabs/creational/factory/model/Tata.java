@@ -1,6 +1,6 @@
 package com.techlabs.creational.factory.model;
 
-public class Tata implements ICar {
+public class Tata implements ICar{
 
 	@Override
 	public void start() {

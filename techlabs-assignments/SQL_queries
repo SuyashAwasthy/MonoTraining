@@ -1,0 +1,88 @@
+#1. Display all employee names in ascending order
+select ename from emp order by ename asc;
+
+#2. Display all employees(all columns) in department 20 and 30
+select * from emp where DEPTNO in (20,30,10) order by DEPTNO asc;
+
+#3. Display all the employees who are managers
+select * from emp where JOB like 'manager';
+
+#4. Display all the employees whose salary is between 2000 and 5000
+select * from emp where sal>=2000 and sal<=5000;
+#select * from emp where sal between 2000 and 5000;
+
+#5. Display all the employees whose commission is null
+select * from emp where comm is null;
+
+#6. Display emp_name,salary,comission,ctc(calculated column)
+select ename, sal, comm, (sal+ coalesce(comm,0)) as ctc from emp;
+#select ename, sal, comm, (sal+ ifnull(comm,0)) as ctc from emp;
+
+#7. Display hire_date, current_date, tenure(calculated col) of the empl
+#select ename, hiredate, current_date(), concat(timestampdiff(year, hiredate, current_date()), ' years ',timestampdiff(month, hiredate, current_date())%12, ' months') as tenure from emp; 
+select ename, hiredate, now(), concat(timestampdiff(year, hiredate, now()), ' years ',timestampdiff(month, hiredate, current_date())%12, ' months') as tenure from emp; 
+
+#8. Display all the employees whose name starts with s
+select ename from emp where ename like 's%';
+
+#8.1. Display all the employees whose name contains s
+select ename from emp where ename like '%s%';
+
+#8.2. Display all the employees whose name ends with s
+select ename from emp where ename like '%s';
+
+select ename from emp where ename like '_____';
+
+select ename from emp where ename regexp '^[ajd]';
+
+select ename from emp where ename regexp '^[a-zA-Z]{6}$';
+
+#9. Display unique department numbers from the employee table
+select distinct DEPTNO from emp;
+
+#10. Display emp_name and job in lower case
+select lower(ename) as empname, lower(job) as job from emp; 
+
+#11. Select top 3 salary earning employee
+select * from emp order by sal desc limit 3;
+
+#12. Select clerks and Managers in department 10
+select * from emp where DEPTNO=10 and JOB in ('clerk','manager');
+
+#13. Display all clerks in ascending order of the department number 
+select * from emp where JOB='clerk' order by DEPTNO asc;
+
+#14. Display All employees in the same dept of 'SCOTT' 
+select ename from emp where DEPTNO = (select DEPTNO from emp where ename='SCOTT');
+select e2.ename from emp e1, emp e2 where e1.DEPTNO = e2.DEPTNO and e1.ename='SCOTT' and e2.ename!='SCOTT';
+
+#15. Employees having same designation of SMITH
+select e1.* from emp e1 JOIN emp e2 on e1.JOB = e2.JOB where e2.ename='SMITH' and e1.ename!='SMITH';
+
+#16. Employee who are reproting under KING
+select * from emp where MGR=(select EMPNO from emp where ename='KING');
+
+#17. Employees who have same salary of BLAKE
+select * from emp where sal=(select sal from emp where ename='SCOTT') and ename!='SCOTT';
+
+#18. Display departmentwise number of employees
+select DEPTNO, count(*) as numberOfEmployees from emp group by deptno;
+
+#19. Display jobwise number of employees
+select job, count(*) as numberOfEmployees from emp group by job;
+
+#20. Display deptwise jobwise number of employees
+select count(*) as totalEmployees, job, deptno from emp group by deptno, job order by deptno,job;
+
+#21. Display deptwise  employees greater than  3 
+select deptno, count(*) as numberOfEmployees from emp group by deptno having count(*)>3; 
+
+#22. Display designation wise employees count greater than 3 
+select job, count(*) as numberOfEmployees from emp group by job having count(*)>3; 
+
+#23. Display Employee name,deptname and location
+select e.ename as employeeName, d.DNAME as department, d.LOC as location from emp e JOIN dept d on e.DEPTNO=d.DEPTNO;
+select e.*, d.* from emp e JOIN dept d on e.DEPTNO=d.DEPTNO;
+
+#24. display all deptnames and corresponding employees if ANY
+select d.dname as department, e.ename as employee from emp e RIGHT JOIN dept d on d.deptno=e.DEPTNO; 
